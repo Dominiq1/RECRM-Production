@@ -341,8 +341,8 @@ function CellBox({params, rowId, setRowId, item, successCheck }) {
 
             <Box sx={{display: 'flex', flexDirection: 'column'}}>
 
-        {arrayCell.map((tag) => (
-            <Box sx={{fontWeight: 'bold', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignContent: 'center'}}> 
+        {arrayCell.map((tag, index) => (
+            <Box key={index} sx={{fontWeight: 'bold', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignContent: 'center'}}> 
                  <p style={{}}> {tag} </p>
                 </Box>
            

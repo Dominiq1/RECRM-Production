@@ -284,7 +284,7 @@ Lead
                 {notesLoading ? (
                   <Typography variant="body1">Loading Notes...</Typography>
                 ) : notesData && notesData.notes && notesData.notes.length > 0 ? (
-                  notesData.notes.map((note) => <SnackBar notes={notesData} type="Notes" />)
+                  notesData.notes.map((note, index) => <SnackBar key={index} notes={notesData} type="Notes" />)
                 ) : (
                   <Typography variant="body1">No Notes</Typography>
                 )}
