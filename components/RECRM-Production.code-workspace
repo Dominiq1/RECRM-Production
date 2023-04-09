@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "RECRM-Production",
+			"path": ".."
+		},
+		{
+			"name": "mutations",
+			"path": "../../../RE-CRM/client/src/mutations"
+		},
+		{
+			"name": "queries",
+			"path": "../../../RE-CRM/client/src/queries"
+		}
+	],
+	"settings": {}
+}

@@ -1,6 +1,6 @@
 import { SupportedExportFormats } from '@/types/export';
 import { PluginKey } from '@/types/plugin';
-import { IconFileExport, IconMoon, IconSun } from '@tabler/icons-react';
+import { IconFileExport, IconMoon, IconSun, IconUser } from '@tabler/icons-react';
 import { useTranslation } from 'next-i18next';
 import { FC } from 'react';
 import { Import } from '../Settings/Import';
@@ -17,6 +17,7 @@ interface Props {
   serverSidePluginKeysSet: boolean;
   conversationsCount: number;
   onToggleLightMode: (mode: 'light' | 'dark') => void;
+  onToggleCRM: () => void;
   onApiKeyChange: (apiKey: string) => void;
   onClearConversations: () => void;
   onExportConversations: () => void;
@@ -33,10 +34,12 @@ export const ChatbarSettings: FC<Props> = ({
   serverSidePluginKeysSet,
   conversationsCount,
   onToggleLightMode,
+  onToggleCRM,
   onApiKeyChange,
   onClearConversations,
   onExportConversations,
   onImportConversations,
+  
   onPluginKeyChange,
   onClearPluginKey,
 }) => {
@@ -47,6 +50,23 @@ export const ChatbarSettings: FC<Props> = ({
       {conversationsCount > 0 ? (
         <ClearConversations onClearConversations={onClearConversations} />
       ) : null}
+
+
+
+
+
+<SidebarButton
+        text={lightMode === 'light' ? t('CRM mode') : t('GPT mode')}
+        icon={
+          lightMode === 'light' ? <IconUser size={18} /> : <IconUser size={18} />
+        }
+        onClick={() =>
+          onToggleCRM()
+        }
+      />
+
+
+
 
       <Import onImport={onImportConversations} />
 

@@ -26,6 +26,7 @@ interface Props {
   onUpdateFolder: (folderId: string, name: string) => void;
   onNewConversation: () => void;
   onToggleLightMode: (mode: 'light' | 'dark') => void;
+  onToggleCRM: () => void;
   onSelectConversation: (conversation: Conversation) => void;
   onDeleteConversation: (conversation: Conversation) => void;
   onUpdateConversation: (
@@ -55,6 +56,7 @@ export const Chatbar: FC<Props> = ({
   onUpdateFolder,
   onNewConversation,
   onToggleLightMode,
+  onToggleCRM,
   onSelectConversation,
   onDeleteConversation,
   onUpdateConversation,
@@ -207,6 +209,7 @@ export const Chatbar: FC<Props> = ({
         serverSidePluginKeysSet={serverSidePluginKeysSet}
         conversationsCount={conversations.length}
         onToggleLightMode={onToggleLightMode}
+        onToggleCRM={onToggleCRM}
         onApiKeyChange={onApiKeyChange}
         onClearConversations={onClearConversations}
         onExportConversations={onExportConversations}

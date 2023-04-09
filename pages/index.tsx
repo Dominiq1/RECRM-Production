@@ -2,6 +2,7 @@ import { Chat } from '@/components/Chat/Chat';
 import { Chatbar } from '@/components/Chatbar/Chatbar';
 import { Navbar } from '@/components/Mobile/Navbar';
 import { Promptbar } from '@/components/Promptbar/Promptbar';
+import DataGridCSV from '@/components/dataGrid/DataGridCSV';
 import { ChatBody, Conversation, Message } from '@/types/chat';
 import { KeyValuePair } from '@/types/data';
 import { ErrorMessage } from '@/types/error';
@@ -29,6 +30,7 @@ import {
 import { saveFolders } from '@/utils/app/folders';
 import { exportData, importData } from '@/utils/app/importExport';
 import { savePrompts } from '@/utils/app/prompts';
+import { DataGridPro } from '@mui/x-data-grid-pro';
 import { IconArrowBarLeft, IconArrowBarRight } from '@tabler/icons-react';
 import { GetServerSideProps } from 'next';
 import { useTranslation } from 'next-i18next';
@@ -37,6 +39,8 @@ import Head from 'next/head';
 import { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
+import BlogPage from '../components/CrmLeads';
+
 
 interface HomeProps {
   serverSideApiKeyIsSet: boolean;
@@ -69,6 +73,8 @@ const Home: React.FC<HomeProps> = ({
   const [selectedConversation, setSelectedConversation] =
     useState<Conversation>();
   const [currentMessage, setCurrentMessage] = useState<Message>();
+
+  const [CRMMode , setCRMMode ] = useState<boolean>(false);
 
   const [showSidebar, setShowSidebar] = useState<boolean>(true);
 
@@ -768,6 +774,7 @@ const Home: React.FC<HomeProps> = ({
                   serverSidePluginKeysSet={serverSidePluginKeysSet}
                   folders={folders.filter((folder) => folder.type === 'chat')}
                   onToggleLightMode={handleLightMode}
+                  onToggleCRM={() => setCRMMode(!CRMMode)}
                   onCreateFolder={(name) => handleCreateFolder(name, 'chat')}
                   onDeleteFolder={handleDeleteFolder}
                   onUpdateFolder={handleUpdateFolder}
@@ -804,7 +811,18 @@ const Home: React.FC<HomeProps> = ({
             )}
 
             <div className="flex flex-1">
-              <Chat
+              {CRMMode? (
+           
+
+           <BlogPage/>
+          // null
+                
+          
+
+            
+            
+              
+              ) : (   <Chat
                 conversation={selectedConversation}
                 messageIsStreaming={messageIsStreaming}
                 apiKey={apiKey}
@@ -818,7 +836,12 @@ const Home: React.FC<HomeProps> = ({
                 onUpdateConversation={handleUpdateConversation}
                 onEditMessage={handleEditMessage}
                 stopConversationRef={stopConversationRef}
-              />
+              />) }
+
+           
+
+
+
             </div>
 
             {showPromptbar ? (
